@@ -3,13 +3,13 @@ from __future__ import annotations
 import pytest
 
 from chile_sii_sdk import __version__
+from chile_sii_sdk.clients import SyncSiiClient
 from chile_sii_sdk.config import SiiConfig, SiiEnvironment
 from chile_sii_sdk.errors import SiiError
-from chile_sii_sdk.clients import SyncSiiClient
 
 
 def test_version_follows_semver() -> None:
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.2.0"
 
 
 def test_config_defaults_to_certification_environment() -> None:

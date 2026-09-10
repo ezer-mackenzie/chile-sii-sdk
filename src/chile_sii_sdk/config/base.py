@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 from chile_sii_sdk.errors import SiiError
 
 
-class SiiEnvironment(str, Enum):
+class SiiEnvironment(StrEnum):
     """Supported SII operating environments."""
 
     CERTIFICATION = "certification"
@@ -19,7 +19,7 @@ class SiiEnvironment(str, Enum):
 class SiiConfig:
     """Configuration for SII API access."""
 
-    environment: SiiEnvironment | str = SiiEnvironment.CERTIFICATION
+    environment: SiiEnvironment = SiiEnvironment.CERTIFICATION
     timeout: int = 30
     verify_ssl: bool = True
     certificate_path: str | None = None
@@ -27,9 +27,9 @@ class SiiConfig:
     certificate_password: str | None = None
 
     def __post_init__(self) -> None:
-        if isinstance(self.environment, str):
+        if not isinstance(self.environment, SiiEnvironment):
             try:
-                self.environment = SiiEnvironment(self.environment)
+                self.environment = SiiEnvironment(str(self.environment))
             except ValueError as exc:
                 raise SiiError(
                     "Unsupported SII environment. Use 'certification' or 'production'."
@@ -37,3 +37,8 @@ class SiiConfig:
 
         if self.timeout <= 0:
             raise SiiError("SII timeout must be greater than zero.")
+
+    @property
+    def normalized_environment(self) -> SiiEnvironment:
+        """Return the environment as a concrete enum value."""
+        return self.environment
