@@ -1,15 +1,28 @@
 [project]
 name = "chile-sii-sdk"
 version = "0.1.0"
-description = ""
+description = "Open-source Python SDK for Chilean SII services and compliance workflows"
 authors = [
     {name = "Eli-ezer Reuven Ramirez Ruiz",email = "ramirez.ruiz.eliezer.reuven@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = [
+    "httpx>=0.27.0",
+    "cryptography>=42.0.0",
+    "pydantic>=2.7.0",
 ]
 
+[project.optional-dependencies]
+docs = [
+    "mkdocs-material>=9.5.0",
+    "mkdocs-static-i18n>=1.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ezer-mackenzie/chile-sii-sdk"
+Repository = "https://github.com/ezer-mackenzie/chile-sii-sdk"
+Documentation = "https://example.com/chile-sii-sdk"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

@@ -1,0 +1,52 @@
+site_name: Chile SII SDK
+site_description: Open-source Python SDK for Chilean SII services
+site_url: https://example.com/chile-sii-sdk
+repo_name: ezer-mackenzie/chile-sii-sdk
+repo_url: https://github.com/ezer-mackenzie/chile-sii-sdk
+edit_uri: edit/main/docs/
+
+nav:
+  - Home: index.md
+  - Roadmap: roadmap.md
+  - Getting Started: getting-started.md
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+    - search.highlight
+
+plugins:
+  - search
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        es: Español
+      nav_translations:
+        es:
+          Home: Inicio
+          Roadmap: Hoja de ruta
+          Getting Started: Primeros pasos
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_inherit
+  - tables
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ezer-mackenzie
+
+watch:
+  - docs
